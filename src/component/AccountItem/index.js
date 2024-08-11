@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,12 +13,14 @@ function AccountItem({ data }) {
             <div className={cx('info')}>
                 <p className={cx('name')}>
                     <span>{data.full_name}</span>
-                    <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                    {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                 </p>
                 <span className={cx('usename')}>{data.nickname}</span>
             </div>
         </Link>
     );
 }
+
+AccountItem.propTypes = { data: PropTypes.object.isRequired };
 
 export default AccountItem;
